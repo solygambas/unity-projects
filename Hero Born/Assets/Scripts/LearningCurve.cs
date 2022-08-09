@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LearningCurve : MonoBehaviour
 {
-    public int currentAge = 30;
-    public int addedAge = 1;
+    private int CurrentAge = 30;
+    // CurrentAge = 30;
+    public int AddedAge = 1;
+    public string FirstName = "Harrison";
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +17,16 @@ public class LearningCurve : MonoBehaviour
 
         // methods
         ComputeAge();
+
+        // debug
+        Debug.Log("Text goes here");
+        Debug.LogFormat("Text goes here, add {0} and {1} as variable placeholders", CurrentAge, FirstName);
     }
 
     // method
     void ComputeAge()
     {
-        Debug.Log(currentAge + addedAge);
+        Debug.Log(CurrentAge + AddedAge);
     }
 
     // Update is called once per frame
