@@ -36,6 +36,9 @@ public class LearningCurve : MonoBehaviour
     // topPlayerScores[1] = 1001;
     // topPlayerScores.Length;
 
+    // while loops
+    int PlayerLives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,18 +96,43 @@ public class LearningCurve : MonoBehaviour
         {
             { "Potion", 5 },
             { "Antidote", 7 },
-            { "Aspirin", 1 }
+            { "Aspirin", 1 },
+            { "Gold", 32 }
         };
-        Debug.LogFormat("Items: {0}", ItemInventory.Count);
-        int numberOfPotions = ItemInventory["Potion"];
-        ItemInventory["Potion"] = 10;
-        ItemInventory.Add("Throwing Knife", 3);
-        ItemInventory["Bandage"] = 5;
-        if(ItemInventory.ContainsKey("Aspirin"))
-        {
-            ItemInventory["Aspirin"] = 3;
-        }
-        ItemInventory.Remove("Antidote");
+        // Debug.LogFormat("Items: {0}", ItemInventory.Count);
+        // int numberOfPotions = ItemInventory["Potion"];
+        // ItemInventory["Potion"] = 10;
+        // ItemInventory.Add("Throwing Knife", 3);
+        // ItemInventory["Bandage"] = 5;
+        // if(ItemInventory.ContainsKey("Aspirin"))
+        // {
+        //     ItemInventory["Aspirin"] = 3;
+        // }
+        // ItemInventory.Remove("Antidote");
+
+        // for loops
+        // for (int i = 0; i < QuestPartyMembers.Count; i++)
+        // {
+        //     Debug.LogFormat("Index: {0} - {1}", i, QuestPartyMembers[i]);
+        // };
+        // FindPartyMember();
+
+        // foreach loops
+        // foreach(string partyMember in QuestPartyMembers)
+        // {
+        //     Debug.LogFormat("{0} - Here!", partyMember);
+        // }
+        // foreach(KeyValuePair<string, int> kvp in ItemInventory)
+        // {
+        //     Debug.LogFormat("Item: {0} - {1}g", kvp.Key, kvp.Value);
+        //     if(kvp.Key == "Gold") {
+        //         Thievery(kvp.Value);
+        //     }
+        // }
+
+        // while loops
+        HealthStatus();
+
     }
 
     // method
@@ -124,7 +152,7 @@ public class LearningCurve : MonoBehaviour
     //     Debug.Log(number);
     // }
 
-    // public void Thievery()
+    // public void Thievery(int CurrentGold)
     // {
     //     if(CurrentGold > 50)
     //     {
@@ -189,6 +217,34 @@ public class LearningCurve : MonoBehaviour
     //             break;
     //     }
     // }
+
+    // public void FindPartyMember()
+    // {
+    //     List<string> QuestPartyMembers = new List<string>()
+    //     {
+    //         "Grim the Barbarian",
+    //         "Merlin the Wise",
+    //         "Sterling the Knight"
+    //     };
+    //     for (int i = 0; i < QuestPartyMembers.Count; i++)
+    //     {
+    //         Debug.LogFormat("Index: {0} - {1}", i, QuestPartyMembers[i]);
+    //         if(QuestPartyMembers[i] == "Merlin the Wise")
+    //         {
+    //             Debug.Log("Glad you're here Merlin!");
+    //         }
+    //     };
+    // }
+
+    public void HealthStatus()
+    {
+        while(PlayerLives > 0)
+        {
+            Debug.Log("Still alive!");
+            PlayerLives--;
+        }
+        Debug.Log("Player KO'd...");
+    }
 
     // Update is called once per frame
     void Update()
