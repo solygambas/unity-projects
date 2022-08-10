@@ -23,9 +23,11 @@ public class LearningCurve : MonoBehaviour
     // control flow
     // public bool hasDungeonKey = true;
     // public int CurrentGold = 32;
-    public bool PureOfHeart = true;
-    public bool HasSecretIncantation = false;
-    public string RareItem = "Relic Stone";
+    // public bool PureOfHeart = true;
+    // public bool HasSecretIncantation = false;
+    // public string RareItem = "Relic Stone";
+    // string CharacterAction = "Attack";
+    int DiceRoll = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,11 @@ public class LearningCurve : MonoBehaviour
         //     Debug.Log("You have not proved yourself yet.");
         // }
         // Thievery();
-        OpenTreasureChamber();
+        // OpenTreasureChamber();
+
+        // switch
+        // PrintCharacterAction();
+        RollDice();
     }
 
     // method
@@ -94,22 +100,55 @@ public class LearningCurve : MonoBehaviour
     //     }
     // }
 
-    public void OpenTreasureChamber()
+    // public void OpenTreasureChamber()
+    // {
+    //     if(PureOfHeart && RareItem == "Relic Stone")
+    //     {
+    //         if(!HasSecretIncantation)
+    //         {
+    //             Debug.Log("You have the spirit, but not the knowledge.");
+    //         }
+    //         else
+    //         {
+    //             Debug.Log("The treasure is yours, worthy hero!");
+    //         }
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Come back when you have what it takes.");
+    //     }
+    // }
+
+    // public void PrintCharacterAction()
+    // {
+    //     switch(CharacterAction)
+    //     {
+    //         case "Heal":
+    //             Debug.Log("Potion sent.");
+    //             break;
+    //         case "Attack":
+    //             Debug.Log("To arms!");
+    //             break;
+    //         default:
+    //             Debug.Log("Shields up.");
+    //             break;
+    //     }
+    // } 
+
+    public void RollDice()
     {
-        if(PureOfHeart && RareItem == "Relic Stone")
+        switch(DiceRoll)
         {
-            if(!HasSecretIncantation)
-            {
-                Debug.Log("You have the spirit, but not the knowledge.");
-            }
-            else
-            {
-                Debug.Log("The treasure is yours, worthy hero!");
-            }
-        }
-        else
-        {
-            Debug.Log("Come back when you have what it takes.");
+            case 7:
+            case 15:
+                Debug.Log("Mediocre damage, not bad.");
+                break;
+            case 20:
+                Debug.Log("Critical hit, the creature goes down!");
+                break;
+            default:
+                Debug.Log("You completely missed and fell on your face.");
+                break;
         }
     }
 
