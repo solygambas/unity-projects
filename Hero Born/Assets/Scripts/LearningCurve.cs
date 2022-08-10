@@ -37,7 +37,7 @@ public class LearningCurve : MonoBehaviour
     // topPlayerScores.Length;
 
     // while loops
-    int PlayerLives = 3;
+    // int PlayerLives = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -92,13 +92,13 @@ public class LearningCurve : MonoBehaviour
         // Debug.LogFormat("Party Members: {0}", QuestPartyMembers.Count);
 
         // dictionaries
-        Dictionary<string, int> ItemInventory = new Dictionary<string, int>()
-        {
-            { "Potion", 5 },
-            { "Antidote", 7 },
-            { "Aspirin", 1 },
-            { "Gold", 32 }
-        };
+        // Dictionary<string, int> ItemInventory = new Dictionary<string, int>()
+        // {
+        //     { "Potion", 5 },
+        //     { "Antidote", 7 },
+        //     { "Aspirin", 1 },
+        //     { "Gold", 32 }
+        // };
         // Debug.LogFormat("Items: {0}", ItemInventory.Count);
         // int numberOfPotions = ItemInventory["Potion"];
         // ItemInventory["Potion"] = 10;
@@ -131,7 +131,15 @@ public class LearningCurve : MonoBehaviour
         // }
 
         // while loops
-        HealthStatus();
+        // HealthStatus();
+
+        // classes
+        Character hero = new Character("Agatha");
+        Character heroine = new Character();
+        // Debug.LogFormat("Hero: {0} - {1} EXP", hero.name, hero.exp);
+        // Debug.LogFormat("Hero: {0} - {1} EXP", heroine.name, heroine.exp);
+        hero.PrintStatsInfo();
+        heroine.PrintStatsInfo();
 
     }
 
@@ -236,15 +244,15 @@ public class LearningCurve : MonoBehaviour
     //     };
     // }
 
-    public void HealthStatus()
-    {
-        while(PlayerLives > 0)
-        {
-            Debug.Log("Still alive!");
-            PlayerLives--;
-        }
-        Debug.Log("Player KO'd...");
-    }
+    // public void HealthStatus()
+    // {
+    //     while(PlayerLives > 0)
+    //     {
+    //         Debug.Log("Still alive!");
+    //         PlayerLives--;
+    //     }
+    //     Debug.Log("Player KO'd...");
+    // }
 
     // Update is called once per frame
     void Update()
