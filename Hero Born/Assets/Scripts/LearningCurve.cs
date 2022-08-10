@@ -27,7 +27,14 @@ public class LearningCurve : MonoBehaviour
     // public bool HasSecretIncantation = false;
     // public string RareItem = "Relic Stone";
     // string CharacterAction = "Attack";
-    int DiceRoll = 7;
+    // int DiceRoll = 7;
+
+    // arrays
+    // int[] topPlayerScores = new int[] {713, 549, 984};
+    // int[] topPlayerScores = { 713, 549, 984 };
+    // int score = topPlayerScores[1]; 
+    // topPlayerScores[1] = 1001;
+    // topPlayerScores.Length;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +73,38 @@ public class LearningCurve : MonoBehaviour
 
         // switch
         // PrintCharacterAction();
-        RollDice();
+        // RollDice();
+
+        // lists
+        // List<string> QuestPartyMembers = new List<string>()
+        // {
+        //     "Grim the Barbarian",
+        //     "Merlin the Wise",
+        //     "Sterling the Knight"
+        // };
+        // QuestPartyMembers.Add("Craven the Necromancer");
+        // QuestPartyMembers.Insert(1, "Tanis the Thief");
+        // QuestPartyMembers.RemoveAt(0);
+        // QuestPartyMembers.Remove("Grim the Barbarian");
+        // Debug.LogFormat("Party Members: {0}", QuestPartyMembers.Count);
+
+        // dictionaries
+        Dictionary<string, int> ItemInventory = new Dictionary<string, int>()
+        {
+            { "Potion", 5 },
+            { "Antidote", 7 },
+            { "Aspirin", 1 }
+        };
+        Debug.LogFormat("Items: {0}", ItemInventory.Count);
+        int numberOfPotions = ItemInventory["Potion"];
+        ItemInventory["Potion"] = 10;
+        ItemInventory.Add("Throwing Knife", 3);
+        ItemInventory["Bandage"] = 5;
+        if(ItemInventory.ContainsKey("Aspirin"))
+        {
+            ItemInventory["Aspirin"] = 3;
+        }
+        ItemInventory.Remove("Antidote");
     }
 
     // method
@@ -135,22 +173,22 @@ public class LearningCurve : MonoBehaviour
     //     }
     // } 
 
-    public void RollDice()
-    {
-        switch(DiceRoll)
-        {
-            case 7:
-            case 15:
-                Debug.Log("Mediocre damage, not bad.");
-                break;
-            case 20:
-                Debug.Log("Critical hit, the creature goes down!");
-                break;
-            default:
-                Debug.Log("You completely missed and fell on your face.");
-                break;
-        }
-    }
+    // public void RollDice()
+    // {
+    //     switch(DiceRoll)
+    //     {
+    //         case 7:
+    //         case 15:
+    //             Debug.Log("Mediocre damage, not bad.");
+    //             break;
+    //         case 20:
+    //             Debug.Log("Critical hit, the creature goes down!");
+    //             break;
+    //         default:
+    //             Debug.Log("You completely missed and fell on your face.");
+    //             break;
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()
