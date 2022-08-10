@@ -39,6 +39,11 @@ public class LearningCurve : MonoBehaviour
     // while loops
     // int PlayerLives = 3;
 
+    // OOP in Unity
+    public Transform CamTransform;
+    public GameObject DirectionLight;
+    public Transform LightTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -134,13 +139,32 @@ public class LearningCurve : MonoBehaviour
         // HealthStatus();
 
         // classes
-        Character hero = new Character("Agatha");
-        Character heroine = new Character();
-        // Debug.LogFormat("Hero: {0} - {1} EXP", hero.name, hero.exp);
-        // Debug.LogFormat("Hero: {0} - {1} EXP", heroine.name, heroine.exp);
-        hero.PrintStatsInfo();
-        heroine.PrintStatsInfo();
+        // Character hero = new Character("Agatha");
+        // Character heroine = new Character();
+        // // Debug.LogFormat("Hero: {0} - {1} EXP", hero.name, hero.exp);
+        // // Debug.LogFormat("Hero: {0} - {1} EXP", heroine.name, heroine.exp);
+        // hero.PrintStatsInfo();
+        // heroine.PrintStatsInfo();
 
+        // structs
+        // Weapon huntingBow = new Weapon("Hunting Bow", 105);
+        // Weapon warBow = huntingBow;
+        // warBow.name = "War Bow";
+        // warBow.damage = 155;
+        // huntingBow.PrintWeaponStats();
+        // warBow.PrintWeaponStats();
+
+        // inheritance
+        // Paladin knight = new Paladin("Sir Arthur", huntingBow);
+        // knight.PrintStatsInfo();
+
+        // OOP in Unity
+        CamTransform = this.GetComponent<Transform>();
+        Debug.Log(CamTransform.localPosition);
+        // DirectionLight = GameObject.Find("Directional Light");
+        // LightTransform = DirectionLight.GetComponent<Transform>();
+        // LightTransform = GameObject.Find("Directional Light").GetComponent<Transform>();
+        // Debug.Log(LightTransform.localPosition);
     }
 
     // method

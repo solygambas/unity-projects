@@ -9,5 +9,7 @@
 - holding collections of values with arrays and lists.
 - handling key-value pairs with dictionaries.
 - looping through collections with for, foreach and while loops.
+- declaring classes and structs.
+- creating classes using inheritance, composition, and polymorphism.
 
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021)
