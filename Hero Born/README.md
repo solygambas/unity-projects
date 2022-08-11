@@ -2,6 +2,8 @@
 
 ## Features
 
+### C# basics
+
 - setting up a new project in Unity.
 - understanding variables, methods, and classes.
 - formatting code and debugging information.
@@ -11,5 +13,14 @@
 - looping through collections with for, foreach and while loops.
 - declaring classes and structs.
 - creating classes using inheritance, composition, and polymorphism.
+
+### Unity basics
+
+- building a level in Unity, creating primitives and thinking in 3D.
+- keeping the hierarchy of game objects clean.
+- working with prefabs.
+- setting up lights.
+- creating animations in code and in Unity.
+- recording keyframes.
 
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021)
