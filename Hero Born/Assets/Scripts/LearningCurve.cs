@@ -159,8 +159,6 @@ public class LearningCurve : MonoBehaviour
         // knight.PrintStatsInfo();
 
         // OOP in Unity
-        CamTransform = this.GetComponent<Transform>();
-        Debug.Log(CamTransform.localPosition);
         // DirectionLight = GameObject.Find("Directional Light");
         // LightTransform = DirectionLight.GetComponent<Transform>();
         // LightTransform = GameObject.Find("Directional Light").GetComponent<Transform>();
