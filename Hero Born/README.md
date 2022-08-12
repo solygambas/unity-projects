@@ -23,4 +23,11 @@
 - creating animations in code and in Unity.
 - recording keyframes.
 
+### Game prototype
+
+- managing player movement.
+- moving the player with the Transform component.
+- scripting camera behavior.
+- working with the Unity physics system : Rigidbody, colliders and triggers.
+
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021)
