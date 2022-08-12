@@ -1,5 +1,7 @@
 # Hero Born
 
+A First-person shooter (FPS) game prototype focused on avoiding enemies and collecting health items.
+
 ## Features
 
 ### C# basics
