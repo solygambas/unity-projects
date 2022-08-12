@@ -19,6 +19,6 @@ public class PlayerBehavior : MonoBehaviour
         _hInput = Input.GetAxis("Horizontal") * RotateSpeed;
         // this = the GameObject the script is attached to
         this.transform.Translate(Vector3.forward * _vInput * Time.deltaTime);
-        this.transform.Translate(Vector3.up * _hInput * Time.deltaTime, Space.World);
+        this.transform.Rotate(Vector3.up * _hInput * Time.deltaTime);
     }
 }
