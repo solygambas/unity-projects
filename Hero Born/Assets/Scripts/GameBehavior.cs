@@ -19,6 +19,13 @@ public class GameBehavior : MonoBehaviour
     }
 
     public Button WinButton;
+    public Button LossButton;
+
+    public void UpdateScene(string updatedText)
+    {
+        ProgressText.text = updatedText;
+        Time.timeScale = 0f;
+    }
 
     private int _itemsCollected = 0;
     public int Items
@@ -31,9 +38,8 @@ public class GameBehavior : MonoBehaviour
             ItemText.text = "Items collected: " + Items;
             if(_itemsCollected >= MaxItems)
             {
-                ProgressText.text = "You've found all the items!";
                 WinButton.gameObject.SetActive(true);
-                Time.timeScale = 0f;
+                UpdateScene("You've found all the items!");
             }
             else
             {
@@ -48,7 +54,7 @@ public class GameBehavior : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private int _playerHP = 10;
+    private int _playerHP = 1;
     public int HP
     {
         get { return _playerHP; }
@@ -56,6 +62,17 @@ public class GameBehavior : MonoBehaviour
         set {
             _playerHP = value;
             HealthText.text = "Player Health: " + HP;
+            
+            if(_playerHP <= 0)
+            {
+                LossButton.gameObject.SetActive(true);
+                UpdateScene("You want another life with that?");
+            }
+            else
+            {
+                ProgressText.text = "Ouch... that's got hurt.";
+            }
+
             Debug.LogFormat("Lives: {0}", _playerHP);
         }
     }

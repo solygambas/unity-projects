@@ -46,5 +46,8 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - creating a GUI to display player stats.
 - adding win and loss conditions.
 - pausing and restarting the game.
+- referencing the patrol locations and moving enemy agents with NavMesh.
+- changing the agent's destination to seek the player.
+- lowering player health and detecting bullet collisions.
 
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).
