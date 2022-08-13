@@ -19,6 +19,10 @@ public class PlayerBehavior : MonoBehaviour
     public float JumpVelocity = 5f;
     private bool _isJumping;
 
+    public GameObject Bullet;
+    public float BulletSpeed = 100f;
+    private bool _isShooting;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -29,6 +33,7 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
         _isJumping |= Input.GetKeyDown(KeyCode.Space); 
+        _isShooting |= Input.GetMouseButtonDown(0);
         // up, down, W, S
         _vInput = Input.GetAxis("Vertical") * MoveSpeed;
         // left, right, A, D
@@ -45,6 +50,14 @@ public class PlayerBehavior : MonoBehaviour
             _rb.AddForce(Vector3.up * JumpVelocity, ForceMode.Impulse);
         }
         _isJumping = false;
+
+        if (_isShooting)
+        {
+            GameObject newBullet = Instantiate(Bullet, this.transform.position + new Vector3(1, 0, 0), this.transform.rotation);
+            Rigidbody bulletRB = newBullet.GetComponent<Rigidbody>();
+            bulletRB.velocity = this.transform.forward * BulletSpeed;
+        }
+        _isShooting = false;
 
         Vector3 rotation = Vector3.up * _hInput;
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);

@@ -1694,6 +1694,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2624868584324478507, guid: e19f153727a6e4276a9ce4f5109d10e2, type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 4060257034277096991, guid: 9df5fc1118582448fb89d28a2ff5fc4c, type: 3}
+    - target: {fileID: 2624868584324478507, guid: e19f153727a6e4276a9ce4f5109d10e2, type: 3}
       propertyPath: GroundLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
