@@ -32,4 +32,4 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - scripting camera behavior.
 - working with the Unity physics system : Rigidbody, colliders and triggers.
 
-Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021)
+Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).
