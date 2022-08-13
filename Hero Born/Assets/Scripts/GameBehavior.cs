@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class GameBehavior : MonoBehaviour
         ItemText.text += _itemsCollected;
         HealthText.text += _playerHP;
     }
-    private int _itemsCollected = 0;
 
+    public Button WinButton;
+
+    private int _itemsCollected = 0;
     public int Items
     {
         get { return _itemsCollected; }
@@ -29,6 +32,8 @@ public class GameBehavior : MonoBehaviour
             if(_itemsCollected >= MaxItems)
             {
                 ProgressText.text = "You've found all the items!";
+                WinButton.gameObject.SetActive(true);
+                Time.timeScale = 0f;
             }
             else
             {
@@ -37,8 +42,13 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
-    private int _playerHP = 10;
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+    }
 
+    private int _playerHP = 10;
     public int HP
     {
         get { return _playerHP; }

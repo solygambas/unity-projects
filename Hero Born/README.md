@@ -32,4 +32,13 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - scripting camera behavior.
 - working with the Unity physics system : Rigidbody, colliders and triggers.
 
+### Game mechanics
+
+- handling jumps with enumerations and layer masks.
+- shooting projectiles by instantiating and cleaning up objects.
+- creating a game manager with the get and set properties.
+- creating a GUI to display player stats.
+- adding win and loss conditions.
+- pausing and restarting the game.
+
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).
