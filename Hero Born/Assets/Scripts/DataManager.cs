@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using System.Xml;
+using System.Xml.Serialization;
 
 public class DataManager : MonoBehaviour, IManager
 {
@@ -16,14 +18,28 @@ public class DataManager : MonoBehaviour, IManager
     private string _dataPath;
     private string _textFile;
     private string _streamingTextFile;
+    private string _xmlLevelProgress;
+    private string _xmlWeapons;
+
+    private List<Weapon> weaponInventory = new List<Weapon>
+    {
+        new Weapon("Sword of Doom", 100),
+        new Weapon("Butterfly knives", 25),
+        new Weapon("Brass knuckles", 15),
+    };
 
     void Awake()
     {
         _dataPath = Application.persistentDataPath + "/Player_Data/";
+        // Finder > Go > Option Key + Library > Application Support > DefaultCompany
+        // reference: https://www.combin.com/guide/how-to-find-the-application-folder/
+
         // var path = Path.Combine("/Users", "harrison", "Chapter_12");
         // Debug.Log(_dataPath);
         _textFile = _dataPath + "Save_Data.txt";
         _streamingTextFile = _dataPath + "Streaming_Save_Data.txt";
+        _xmlLevelProgress = _dataPath + "Progress_Data.xml";
+        _xmlWeapons = _dataPath + "WeaponInventory.xml";
     }
 
     // Start is called before the first frame update
@@ -42,8 +58,14 @@ public class DataManager : MonoBehaviour, IManager
         // UpdateTextFile();
         // ReadFromFile(_textFile);
 
-        WriteToStream(_streamingTextFile);
-        ReadFromStream(_streamingTextFile);
+        // WriteToStream(_streamingTextFile);
+        // ReadFromStream(_streamingTextFile);
+
+        // WriteToXML(_xmlLevelProgress);
+        // ReadFromStream(_xmlLevelProgress);
+
+        SerializeXML();
+        DeserializeXML();
     }
 
     // public void FilesystemInfo()
@@ -114,18 +136,30 @@ public class DataManager : MonoBehaviour, IManager
     {
         if(!File.Exists(filename))
         {
-            StreamWriter newStream = File.CreateText(filename);
-            newStream.WriteLine("<Save Data> for HERO BORN \n\n");
-            newStream.Close();
+            // StreamWriter newStream = File.CreateText(filename);
+            // newStream.WriteLine("<Save Data> for HERO BORN \n\n");
+            // newStream.Close();
+            // Debug.Log("New file created with StreamWriter!");
+
+            using(StreamWriter newStream = File.CreateText(filename))
+            {
+                newStream.WriteLine("<Save Data> for HERO BORN \n\n");
+            }
             Debug.Log("New file created with StreamWriter!");
         }
-        StreamWriter streamWriter = File.AppendText(filename);
-        streamWriter.WriteLine("Game ended: " + DateTime.Now);
-        streamWriter.Close();
+        // StreamWriter streamWriter = File.AppendText(filename);
+        // streamWriter.WriteLine("Game ended: " + DateTime.Now);
+        // streamWriter.Close();
+        // Debug.Log("File content updated with StreamWriter!");
+
+        using(StreamWriter streamWriter = File.AppendText(filename))
+        {
+            streamWriter.WriteLine("Game ended: " + DateTime.Now);
+        }
         Debug.Log("File content updated with StreamWriter!");
     }
 
-     public void ReadFromStream(string filename)
+    public void ReadFromStream(string filename)
     {
         if(!File.Exists(filename))
         {
@@ -134,5 +168,48 @@ public class DataManager : MonoBehaviour, IManager
         }
         StreamReader streamReader = new StreamReader(filename);
         Debug.Log(streamReader.ReadToEnd());
+    }
+
+    public void WriteToXML(string filename)
+    {
+        if(!File.Exists(filename))
+        {
+            FileStream xmlStream = File.Create(filename);
+            XmlWriter xmlWriter = XmlWriter.Create(xmlStream);
+            xmlWriter.WriteStartDocument();
+            xmlWriter.WriteStartElement("level_progress");
+            for (int i = 1; i < 5; i++)
+            {
+                xmlWriter.WriteElementString("level", "Level-" + i);
+            }
+            xmlWriter.WriteEndElement();
+            xmlWriter.Close();
+            xmlStream.Close();
+        }
+    }
+
+    public void SerializeXML()
+    {
+        var xmlSerializer = new XmlSerializer(typeof(List<Weapon>));
+        using(FileStream stream = File.Create(_xmlWeapons))
+        {
+            xmlSerializer.Serialize(stream, weaponInventory);
+        }
+    }
+
+    public void DeserializeXML()
+    {
+        if(File.Exists(_xmlWeapons))
+        {
+            var xmlSerializer = new XmlSerializer(typeof(List<Weapon>));
+            using(FileStream stream = File.OpenRead(_xmlWeapons))
+            {
+                var weapons = (List<Weapon>)xmlSerializer.Deserialize(stream);
+                foreach(var weapon in weapons)
+                {
+                    Debug.LogFormat("Weapon: {0}, Damage: {1}", weapon.name, weapon.damage);
+                }
+            }
+        }
     }
 }
