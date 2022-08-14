@@ -50,4 +50,13 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - changing the agent's destination to seek the player.
 - lowering player health and detecting bullet collisions.
 
+#### C# intermediate concepts
+
+- using access modifiers: const, readonly, and static.
+- writing overloading methods.
+- using the out and ref parameters.
+- working with interfaces and abstract classes.
+- extending classes and preventing namespace conflicts.
+- leveraging type aliasing.
+
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).

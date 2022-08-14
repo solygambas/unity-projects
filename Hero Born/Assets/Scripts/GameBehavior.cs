@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 // using UnityEngine.SceneManagement;
+using CustomExtensions;
+using CustomInt = System.Int64;
 
 public class GameBehavior : MonoBehaviour, IManager
 {
@@ -20,6 +22,8 @@ public class GameBehavior : MonoBehaviour, IManager
     public Text ItemText;
     public Text ProgressText;
 
+    public CustomInt PlayerHealth = 100;
+
     void Start()
     {
         ItemText.text += _itemsCollected;
@@ -30,6 +34,7 @@ public class GameBehavior : MonoBehaviour, IManager
     public void Initialize()
     {
         _state = "Game Manager initialized...";
+        _state.FancyDebug();
         Debug.Log(_state);
     }
 
