@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 
 public class GameBehavior : MonoBehaviour
 {
-    public int MaxItems = 4;
+    public const int MaxItems = 4;
+    // public readonly int MaxItems;
 
     public Text HealthText;
     public Text ItemText;
@@ -50,8 +51,10 @@ public class GameBehavior : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
+        // SceneManager.LoadScene(0);
+        // Time.timeScale = 1f;
+        // Utilities.RestartLevel();
+        Utilities.RestartLevel(0);
     }
 
     private int _playerHP = 1;
