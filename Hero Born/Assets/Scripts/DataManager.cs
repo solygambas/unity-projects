@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Text;
 
 public class DataManager : MonoBehaviour, IManager
 {
@@ -20,6 +21,7 @@ public class DataManager : MonoBehaviour, IManager
     private string _streamingTextFile;
     private string _xmlLevelProgress;
     private string _xmlWeapons;
+    private string _jsonWeapons;
 
     private List<Weapon> weaponInventory = new List<Weapon>
     {
@@ -40,6 +42,7 @@ public class DataManager : MonoBehaviour, IManager
         _streamingTextFile = _dataPath + "Streaming_Save_Data.txt";
         _xmlLevelProgress = _dataPath + "Progress_Data.xml";
         _xmlWeapons = _dataPath + "WeaponInventory.xml";
+        _jsonWeapons = _dataPath + "WeaponJSON.json";
     }
 
     // Start is called before the first frame update
@@ -64,8 +67,11 @@ public class DataManager : MonoBehaviour, IManager
         // WriteToXML(_xmlLevelProgress);
         // ReadFromStream(_xmlLevelProgress);
 
-        SerializeXML();
-        DeserializeXML();
+        // SerializeXML();
+        // DeserializeXML();
+
+        SerializeJSON();
+        DeserializeJSON();
     }
 
     // public void FilesystemInfo()
@@ -206,6 +212,35 @@ public class DataManager : MonoBehaviour, IManager
             {
                 var weapons = (List<Weapon>)xmlSerializer.Deserialize(stream);
                 foreach(var weapon in weapons)
+                {
+                    Debug.LogFormat("Weapon: {0}, Damage: {1}", weapon.name, weapon.damage);
+                }
+            }
+        }
+    }
+
+    public void SerializeJSON()
+    {
+        // Weapon sword = new Weapon("Sword of Doom", 100);
+        // string jsonString = JsonUtility.ToJson(sword, true);
+        WeaponShop shop = new WeaponShop();
+        shop.inventory = weaponInventory;
+        string jsonString = JsonUtility.ToJson(shop, true);
+        using(StreamWriter stream = File.CreateText(_jsonWeapons))
+        {
+            stream.WriteLine(jsonString);
+        }
+    }
+
+    public void DeserializeJSON()
+    {
+        if(File.Exists(_jsonWeapons))
+        {
+            using(StreamReader stream = new StreamReader(_jsonWeapons))
+            {
+                var jsonString = stream.ReadToEnd();
+                var weaponData = JsonUtility.FromJson<WeaponShop>(jsonString);
+                foreach (var weapon in weaponData.inventory)
                 {
                     Debug.LogFormat("Weapon: {0}, Damage: {1}", weapon.name, weapon.damage);
                 }

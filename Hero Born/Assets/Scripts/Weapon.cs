@@ -21,5 +21,11 @@ public struct Weapon
     }
 }
 
+[Serializable]
+public class WeaponShop
+{
+    public List<Weapon> inventory;
+}
+
 
 

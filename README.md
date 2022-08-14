@@ -59,4 +59,12 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - extending classes and preventing namespace conflicts with type aliasing.
 - working with stacks, queues and hashsets.
 
+### Game data
+
+- navigating the file system.
+- creating, reading, updating, and deleting files.
+- working with text, XML, and JSON data formats.
+- using data streams.
+- serializing and deserializing objects.
+
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).
