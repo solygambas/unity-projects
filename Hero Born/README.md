@@ -50,7 +50,7 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - writing overloading methods.
 - using the out and ref parameters.
 - working with interfaces and abstract classes.
-- extending classes and preventing namespace conflicts.
-- leveraging type aliasing.
+- extending classes and preventing namespace conflicts with type aliasing.
+- working with stacks, queues and hashsets.
 
 Based on [Learning C# by Developing Games with Unity 2021](https://www.amazon.com/Learning-Developing-Games-Unity-2021/dp/1801813949) by Harrison Ferrone (6th Edition, 2021).

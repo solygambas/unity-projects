@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 // using UnityEngine.SceneManagement;
 using CustomExtensions;
-using CustomInt = System.Int64;
+// using CustomInt = System.Int64;
 
 public class GameBehavior : MonoBehaviour, IManager
 {
@@ -15,14 +15,21 @@ public class GameBehavior : MonoBehaviour, IManager
         set { _state = value; }
     }
 
-    public const int MaxItems = 4;
+    public const int MaxItems = 5;
     // public readonly int MaxItems;
 
     public Text HealthText;
     public Text ItemText;
     public Text ProgressText;
 
-    public CustomInt PlayerHealth = 100;
+    // public CustomInt PlayerHealth = 100;
+
+    public Stack<string> LootStack = new Stack<string>();
+    // Queue<string> activePlayers = new Queue<string>();
+    HashSet<string> people = new HashSet<string>() { "Joe", "Joan", "Hank" };
+    HashSet<string> activePlayers = new HashSet<string>() { "Harrison", "Alex", "Haley" };
+    HashSet<string> inactivePlayers = new HashSet<string>() { "Kelsey", "Basel" };
+    HashSet<string> premiumPlayers = new HashSet<string>() { "Haley", "Basel" };
 
     void Start()
     {
@@ -36,6 +43,16 @@ public class GameBehavior : MonoBehaviour, IManager
         _state = "Game Manager initialized...";
         _state.FancyDebug();
         Debug.Log(_state);
+
+        LootStack.Push("Sword of Doom");
+        LootStack.Push("HP Boost");
+        LootStack.Push("Golden Key");
+        LootStack.Push("Pair of Winged Boots");
+        LootStack.Push("Mythril Bracer");
+
+        // activePlayers.Enqueue("Harrison");
+        // activePlayers.Enqueue("Alex");
+        // activePlayers.Enqueue("Haley");
     }
 
     public Button WinButton;
@@ -97,5 +114,31 @@ public class GameBehavior : MonoBehaviour, IManager
 
             Debug.LogFormat("Lives: {0}", _playerHP);
         }
+    }
+
+    public void PrintLoopReport()
+    {
+        var currentItem = LootStack.Pop();
+        var nextItem = LootStack.Peek();
+        Debug.LogFormat("You got a {0}! You've got a good chance of finding a {1} next!", currentItem, nextItem);
+        Debug.LogFormat("There are {0} random loot items waiting for you!", LootStack.Count);
+
+        // LootStack.Clear();
+        // var itemFound = LootStack.Contains("Golden Key");
+        // string[] CopiedLoot = new string[5];
+        // LootStack.CopyTo(CopiedLoot, 0);
+        // LootStack.ToArray();
+
+        // Queues
+        // var firstPlayer = activePlayers.Peek();
+        // var firstPlayer = activePlayers.Dequeue();
+        // Debug.LogFormat(firstPlayer);
+
+        // HashSets
+        // people.Add("Walter");
+        // people.Remove("Joe");
+        // activePlayers.UnionWith(inactivePlayers);
+        activePlayers.IntersectWith(premiumPlayers);
+        activePlayers.ExceptWith(premiumPlayers);
     }
 }
