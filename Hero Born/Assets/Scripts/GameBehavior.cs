@@ -41,7 +41,7 @@ public class GameBehavior : MonoBehaviour, IManager
     public void Initialize()
     {
         _state = "Game Manager initialized...";
-        _state.FancyDebug();
+        // _state.FancyDebug();
         Debug.Log(_state);
 
         LootStack.Push("Sword of Doom");

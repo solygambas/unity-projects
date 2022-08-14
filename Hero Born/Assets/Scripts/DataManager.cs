@@ -15,13 +15,15 @@ public class DataManager : MonoBehaviour, IManager
 
     private string _dataPath;
     private string _textFile;
+    private string _streamingTextFile;
 
     void Awake()
     {
         _dataPath = Application.persistentDataPath + "/Player_Data/";
         // var path = Path.Combine("/Users", "harrison", "Chapter_12");
-        Debug.Log(_dataPath);
+        // Debug.Log(_dataPath);
         _textFile = _dataPath + "Save_Data.txt";
+        _streamingTextFile = _dataPath + "Streaming_Save_Data.txt";
     }
 
     // Start is called before the first frame update
@@ -36,9 +38,12 @@ public class DataManager : MonoBehaviour, IManager
         Debug.Log(_state);
         // FilesystemInfo();
         NewDirectory();
-        NewTextFile();
-        UpdateTextFile();
-        ReadFromFile(_textFile);
+        // NewTextFile();
+        // UpdateTextFile();
+        // ReadFromFile(_textFile);
+
+        WriteToStream(_streamingTextFile);
+        ReadFromStream(_streamingTextFile);
     }
 
     // public void FilesystemInfo()
@@ -53,11 +58,11 @@ public class DataManager : MonoBehaviour, IManager
     {
         if(Directory.Exists(_dataPath))
         {
-            Debug.Log("Directory already exists...");
+            // Debug.Log("Directory already exists...");
             return;
         }
-        Directory.CreateDirectory(_dataPath);
-        Debug.Log("New directory created!");
+        // Directory.CreateDirectory(_dataPath);
+        // Debug.Log("New directory created!");
         // Directory.Delete(_dataPath, true);
         // Debug.Log("Directory successfully deleted!");
     }
@@ -98,10 +103,36 @@ public class DataManager : MonoBehaviour, IManager
     {
         if(!File.Exists(filename))
         {
-             Debug.Log("File doesn't exists or has already been deleted...");
+            Debug.Log("File doesn't exists or has already been deleted...");
             return;
         }
         File.Delete(filename);
         Debug.Log("File successfully deleted!");
+    }
+
+    public void WriteToStream(string filename)
+    {
+        if(!File.Exists(filename))
+        {
+            StreamWriter newStream = File.CreateText(filename);
+            newStream.WriteLine("<Save Data> for HERO BORN \n\n");
+            newStream.Close();
+            Debug.Log("New file created with StreamWriter!");
+        }
+        StreamWriter streamWriter = File.AppendText(filename);
+        streamWriter.WriteLine("Game ended: " + DateTime.Now);
+        streamWriter.Close();
+        Debug.Log("File content updated with StreamWriter!");
+    }
+
+     public void ReadFromStream(string filename)
+    {
+        if(!File.Exists(filename))
+        {
+            Debug.Log("File doesn't exists...");
+            return;
+        }
+        StreamReader streamReader = new StreamReader(filename);
+        Debug.Log(streamReader.ReadToEnd());
     }
 }
