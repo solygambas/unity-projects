@@ -25,6 +25,9 @@ public class PlayerBehavior : MonoBehaviour
 
     private GameBehavior _gameManager;
 
+    public delegate void JumpingEvent();
+    public event JumpingEvent playerJump;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -51,6 +54,7 @@ public class PlayerBehavior : MonoBehaviour
         if(IsGrounded() && _isJumping)
         {
             _rb.AddForce(Vector3.up * JumpVelocity, ForceMode.Impulse);
+            playerJump();
         }
         _isJumping = false;
 

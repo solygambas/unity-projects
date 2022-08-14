@@ -31,6 +31,11 @@ public class GameBehavior : MonoBehaviour, IManager
     HashSet<string> inactivePlayers = new HashSet<string>() { "Kelsey", "Basel" };
     HashSet<string> premiumPlayers = new HashSet<string>() { "Haley", "Basel" };
 
+    public delegate void DebugDelegate(string newText);
+    public DebugDelegate debug = Print;
+
+    public PlayerBehavior playerBehavior;
+
     void Start()
     {
         ItemText.text += _itemsCollected;
@@ -42,7 +47,9 @@ public class GameBehavior : MonoBehaviour, IManager
     {
         _state = "Game Manager initialized...";
         // _state.FancyDebug();
-        Debug.Log(_state);
+        // Debug.Log(_state);
+        debug(_state);
+        LogWithDelegate(debug);
 
         LootStack.Push("Sword of Doom");
         LootStack.Push("HP Boost");
@@ -53,6 +60,12 @@ public class GameBehavior : MonoBehaviour, IManager
         // activePlayers.Enqueue("Harrison");
         // activePlayers.Enqueue("Alex");
         // activePlayers.Enqueue("Haley");
+
+        var itemShop = new Shop<Collectable>();
+        itemShop.AddItem(new Potion());
+        itemShop.AddItem(new Antidote());
+        Debug.Log("There are " + itemShop.inventory.Count + " items for sale.");
+        Debug.Log("There are " + itemShop.GetStockCount<Potion>() + " items for sale.");
     }
 
     public Button WinButton;
@@ -90,7 +103,22 @@ public class GameBehavior : MonoBehaviour, IManager
         // SceneManager.LoadScene(0);
         // Time.timeScale = 1f;
         // Utilities.RestartLevel();
-        Utilities.RestartLevel(0);
+        // Utilities.RestartLevel(0);
+
+        try
+        {
+            Utilities.RestartLevel(-1);
+            debug("Level successfully restarted...");
+        }
+        catch(System.ArgumentException exception)
+        {
+            Utilities.RestartLevel(0);
+            debug("Reverting to scene 0: " + exception.ToString());
+        }
+        finally
+        {
+            debug("Level restart has completed...");
+        }
     }
 
     private int _playerHP = 1;
@@ -140,5 +168,34 @@ public class GameBehavior : MonoBehaviour, IManager
         // activePlayers.UnionWith(inactivePlayers);
         activePlayers.IntersectWith(premiumPlayers);
         activePlayers.ExceptWith(premiumPlayers);
+    }
+
+    public static void Print(string newText)
+    {
+        Debug.Log(newText);
+    }
+
+    public void LogWithDelegate(DebugDelegate del)
+    {
+        del("Delegating the debug task");
+    }
+
+    void OnEnable()
+    {
+        GameObject player = GameObject.Find("Player");
+        playerBehavior = player.GetComponent<PlayerBehavior>();
+        playerBehavior.playerJump += HandlePlayerJump;
+        debug("Jump event subscribed...");
+    }
+
+    public void HandlePlayerJump()
+    {
+        debug("Player has jumped...");
+    }
+
+    private void OnDisable()
+    {
+        playerBehavior.playerJump -= HandlePlayerJump;
+        debug("Jump event unsubscribed");
     }
 }

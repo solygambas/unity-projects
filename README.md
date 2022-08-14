@@ -8,6 +8,12 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 
 [See Hero Born folder](Hero%20Born)
 
+<p align="center">
+    <a href="Hero%20Born">
+        <img src="Hero%20Born/screenshot.png" />
+    </a>
+</p>
+
 ### Features
 
 #### C# basics
@@ -58,6 +64,9 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - working with interfaces and abstract classes.
 - extending classes and preventing namespace conflicts with type aliasing.
 - working with stacks, queues and hashsets.
+- using generics and delegates.
+- creating events and subscriptions.
+- throwing and handling errors.
 
 ### Game data
 

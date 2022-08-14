@@ -2,6 +2,10 @@
 
 A First-person shooter (FPS) game prototype focused on avoiding enemies and collecting health items.
 
+<p align="center">
+    <img src="screenshot.png" />
+</p>
+
 ## Features
 
 ### C# basics
@@ -52,6 +56,9 @@ A First-person shooter (FPS) game prototype focused on avoiding enemies and coll
 - working with interfaces and abstract classes.
 - extending classes and preventing namespace conflicts with type aliasing.
 - working with stacks, queues and hashsets.
+- using generics and delegates.
+- creating events and subscriptions.
+- throwing and handling errors.
 
 ### Game data
 
