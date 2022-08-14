@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 // using UnityEngine.SceneManagement;
 
-public class GameBehavior : MonoBehaviour
+public class GameBehavior : MonoBehaviour, IManager
 {
+    private string _state;
+    public string State
+    {
+        get { return _state; }
+        set { _state = value; }
+    }
+
     public const int MaxItems = 4;
     // public readonly int MaxItems;
 
@@ -17,6 +24,13 @@ public class GameBehavior : MonoBehaviour
     {
         ItemText.text += _itemsCollected;
         HealthText.text += _playerHP;
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        _state = "Game Manager initialized...";
+        Debug.Log(_state);
     }
 
     public Button WinButton;

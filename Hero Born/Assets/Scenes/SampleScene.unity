@@ -2724,6 +2724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138144710}
   - component: {fileID: 2138144709}
+  - component: {fileID: 2138144711}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -2743,7 +2744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e48306e8afa4125bf122c12cf771ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxItems: 1
   HealthText: {fileID: 513352882}
   ItemText: {fileID: 564737798}
   ProgressText: {fileID: 972098266}
@@ -2764,6 +2764,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2138144711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138144708}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cda6f06829943939f976714bd15d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2624868583634335673
 PrefabInstance:
   m_ObjectHideFlags: 0
