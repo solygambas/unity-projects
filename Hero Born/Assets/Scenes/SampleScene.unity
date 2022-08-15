@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 2
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3106,6 +3106,7 @@ MonoBehaviour:
   HealthText: {fileID: 513352882}
   ItemText: {fileID: 564737798}
   ProgressText: {fileID: 972098266}
+  playerBehavior: {fileID: 0}
   WinButton: {fileID: 1003663631}
   LossButton: {fileID: 232127457}
 --- !u!4 &2138144710
